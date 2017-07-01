@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="text/javascript">
+	emojis=["angry",
+"pensive",
+"happy",
+"fearfulscream",
+"crying",
+"relieved",
+"unamused",
+"heartface",
+"winktongue",
+"alien",
+"smirk",
+"cryingloudly",
+"fearful",
+"happytears",
+"angryred",
+"coldsweat",
+"flushed",
+"confounded",
+"sleepy",
+"relievedsweat",
+"grin",
+"wink",
+"astonished"];
+   function changeFunc() {
+   	
+    var selectBox = document.getElementById("selectBox");
+    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+    // alert(selectedValue);
+    var src = 'http://symbiotsystems.com/laksh/emotiwear/' + emojis[selectedValue] +'.png.pbl',
+        img = document.createElement('img');
+
+    img.src = src;
+    document.getElementById("selectedemoji").src=(src);
+   }
+
+   function closeapp(){
+   	console.log("here");
+   	var selectBox = document.getElementById("selectBox");
+    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+	var src = src = 'http://symbiotsystems.com/laksh/emotiwear/' + selectedValue +'.png.pbl';    
+	location.href='pebblejs://close#'+selectedValue;    
+   	
+   }
+
+  </script>
+</head>
+<body>
+	<h1>Select your mood from the dropdown</h1>
+	<div id="selectemoji"></div>
+	</br>
+	</br>
+
+	<img id="selectedemoji" src=""/>
+
+	<button onclick="closeapp();">Set your mood</button>
+	<script type="text/javascript">
+
+	var html="<select id=\"selectBox\" onchange=\"changeFunc();\">";
+	for(i=0;i<emojis.length;i++){
+		html+="<option value=\""+[i]+"\">"+emojis[i]+"</option>";
+	}
+	html+="</select>";
+	document.getElementById("selectemoji").innerHTML = html;
+	changeFunc();
+	</script>
+</body>
+</html>
